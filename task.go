@@ -28,7 +28,7 @@ type Task struct {
 	UpdatedAt  time.Time       `json:"updated_at"`
 }
 
-func NewTask(id, taskType string, payload []byte) (*Task, error) {
+func NewTask(id, taskType string, payload []byte) *Task {
 	now := time.Now().UTC()
 	return &Task{
 		ID:         id,
@@ -39,7 +39,7 @@ func NewTask(id, taskType string, payload []byte) (*Task, error) {
 		MaxRetries: 3,
 		CreatedAt:  now,
 		UpdatedAt:  now,
-	}, nil
+	}
 }
 
 func (t *Task) Marshal() ([]byte, error) {
