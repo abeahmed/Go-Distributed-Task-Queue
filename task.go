@@ -7,6 +7,7 @@ import (
 )
 
 type TaskState string
+
 const (
 	StatePending    TaskState = "PENDING"
 	StateProcessing TaskState = "PROCESSING"
@@ -45,7 +46,7 @@ func (t *Task) Marshal() ([]byte, error) {
 	return json.Marshal(t)
 }
 
-func (t *Task) Unmarshal(data []byte) (*Task, error) {
+func Unmarshal(data []byte) (*Task, error) {
 	var task Task
 	err := json.Unmarshal(data, &task)
 	if err != nil {
